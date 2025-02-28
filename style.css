@@ -1,66 +1,127 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #1ecdff, #afe3f0, #f49127, #f7daa5, #efd685, #12c203, #c3f381);
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(to bottom,rgb(30, 205, 244),rgb(171, 227, 240),#f49127,rgb(247, 218, 165), #efd685, #12c203, #c3f381);
-            font-family: Arial, sans-serif;
-        }
-        .calculator {
-            background: black;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        #display {
-            width: 100%;
-            height: 50px;
-            font-size: 1.5em;
-            text-align: right;
-            background: rgb(137, 210, 226);
-            color: black;
-            border: none;
-            padding: 10px 5px 10px 5px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .buttons {
-            display: grid;
-            justify-content: center;
-            grid-template-columns: repeat(4, 60px);
-            gap: 5px;
-            background: black;
-            padding: 10px;
-            border-radius: 5px;
-            width: fit-content;  /* Ajuste la largeur au contenu */
-            margin: 0 auto;  /* Centre la grille */
-        }
-        button {
-            width: 60px;
-            height: 60px;
-            font-size: 1.5em;
-            background:white;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #b6b3b3;
-        }
-        .equal {
-            background: rgb(6, 241, 6);
-            width: calc(2 * (60px + 10px) - 10px); /* Adapte la largeur aux boutons */
-        }
-        .equal:hover {
-            background: rgb(6, 147, 6);
-        }
+.calculator {
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    position: relative;  /* Permet de positionner l'historique par rapport à la calculatrice */
+}
 
-        .clear {
-            background: orange;
-        }
-        .clear:hover {
-            background: rgb(233, 133, 19);
-        }
-   
+/* Bouton Historique */
+#history-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5em;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Section Historique positionnée juste sous le bouton */
+.history {
+  display: none;
+  position: absolute;
+  top: 60px; /* Placer l'historique juste sous le bouton */
+  left: 10px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history li {
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.history.show {
+  display: block;
+}
+
+#display {
+    width: 95%;
+    height: 45px;
+    font-size: 1.5em;
+    text-align: right;
+    background: rgb(137, 210, 226);
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 70px); /* Ajustement de la taille des colonnes */
+    gap: 10px; /* Ajout d’espace entre les boutons */
+    background: black;
+    padding: 15px;
+    border-radius: 5px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+button {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5em;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #b6b3b3;
+}
+
+.equal {
+    background: rgb(6, 241, 6);
+    grid-column: span 1;
+}
+
+.equal:hover {
+    background: rgb(6, 147, 6);
+}
+
+.clear {
+    background: orange;
+}
+
+.clear:hover {
+    background: rgb(233, 133, 19);
+}
+
+.delete {
+    background: #f33224;
+    color: white;
+}
+
+.delete:hover {
+    background: #d32f2f;
+}
